@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "dammitzeus",
+  "version": "${version}",
+  "name": "DammitZeus",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/dammitzeus/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.zenithknight.mcmods.dammitzeus.DammitZeus"
+    ]
+  },
+  "mixins": [
+    "dammitzeus.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

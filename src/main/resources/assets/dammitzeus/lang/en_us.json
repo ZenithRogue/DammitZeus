@@ -1,0 +1,20 @@
+{
+  "gamerule.lightningConvertsVillagers": "Lightning Converts Villagers",
+  "gamerule.lightningConvertsVillagers.description": "Lightning converts Villagers to Witches",
+  "gamerule.lightningConvertsPigs": "Lightning Converts Pigs",
+  "gamerule.lightningConvertsPigs.description": "Lightning converts Pigs to Zombified Piglins",
+  "gamerule.lightningConvertsMooshrooms": "Lightning Converts Mooshrooms",
+  "gamerule.lightningConvertsMooshrooms.description": "Lightning converts Mooshrooms from Red to Brown, and vice versa",
+  "gamerule.lightningConvertsGuardians": "Lightning Converts Guardians",
+  "gamerule.lightningConvertsGuardians.description": "Lightning converts Guardians to Elder Guardians",
+  "gamerule.lightningChargesCreepers": "Lightning Charges Creepers",
+  "gamerule.lightningChargesCreepers.description": "When Creepers are struck by lightning, they become charged",
+  "gamerule.lightningDamage": "Lightning Entity Damage",
+  "gamerule.lightningDamage.description": "Entities take damage when struct by lightning",
+  "gamerule.lightningFire": "Lightning Sets Fire",
+  "gamerule.lightningFire.description": "Lightning sets nearby blocks on fire",
+  "gamerule.lightningGrowsSlimes": "Lightning Grows Slimes",
+  "gamerule.lightningGrowsSlimes.description": "When struck, slimes are grown to epic proportion",
+  "gamerule.lightningSlimeSize": "Lightning Slime Size",
+  "gamerule.lightningSlimeSize.description": "Size that slimes are set to after beings struck by lightning"
+}

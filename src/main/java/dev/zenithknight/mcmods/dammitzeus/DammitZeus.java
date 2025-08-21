@@ -13,6 +13,7 @@ public class DammitZeus implements ModInitializer {
     public static final GameRules.Key<GameRules.BooleanRule> LIGHTNING_CHARGES_CREEPERS = GameRuleRegistry.register("lightningChargesCreepers", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(true));
     public static final GameRules.Key<GameRules.BooleanRule> LIGHTNING_DAMAGE = GameRuleRegistry.register("lightningDamage", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(true));
     public static final GameRules.Key<GameRules.BooleanRule> LIGHTNING_CREATES_FIRE = GameRuleRegistry.register("lightningFire", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(true));
+    public static final GameRules.Key<GameRules.BooleanRule> LIGHTNING_CLEARS_OXIDATION = GameRuleRegistry.register("lightningClearsOxidation", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(true));
     public static final GameRules.Key<GameRules.BooleanRule> LIGHTNING_GROWS_SLIMES = GameRuleRegistry.register("lightningGrowsSlimes", GameRules.Category.MOBS, GameRuleFactory.createBooleanRule(false));
     public static final GameRules.Key<GameRules.IntRule> LIGHTNING_SLIME_SIZE = GameRuleRegistry.register("lightningSlimeSize", GameRules.Category.MOBS, GameRuleFactory.createIntRule(12));
     @Override

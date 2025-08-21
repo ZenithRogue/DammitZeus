@@ -3,9 +3,12 @@
   "id": "dammitzeus",
   "version": "${version}",
   "name": "DammitZeus",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "Adds gamerules to allow you to control lightning based effects. Also, a couple fun new features",
+  "authors": ["ZenithKnight"],
+  "contact": {
+    "homepage": "https://zenithknight.dev",
+    "sources": "https://github.com/ZenithRogue/DammitZeus"
+  },
   "license": "All-Rights-Reserved",
   "icon": "assets/dammitzeus/icon.png",
   "environment": "*",

@@ -12,3 +12,4 @@ All gamerules are set to match vanilla behavior by default
 * `lightningFire` (default `true`) - Lightning sets nearby blocks on fire
 * `lightningGrowsSlimes` (default `false`) - When struck, slimes are grown to epic proportion
 * `lightningSlimeSize` (default `12`) - Size that slimes are set to after beings struck by lightning
+* `lightningClearsOxidation` (default `true`) - When struck, copper blocks are cleared of oxidation.

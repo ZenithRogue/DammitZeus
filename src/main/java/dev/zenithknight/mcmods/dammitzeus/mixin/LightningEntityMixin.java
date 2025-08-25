@@ -3,6 +3,7 @@ package dev.zenithknight.mcmods.dammitzeus.mixin;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,14 +23,21 @@ public abstract class LightningEntityMixin extends Entity {
 
     @Inject(method = "spawnFire", at = @At("HEAD"), cancellable = true)
     public void spawnFireMixin(int spreadAttempts, CallbackInfo ci) {
-        if (!this.getWorld().getGameRules().getBoolean(LIGHTNING_CREATES_FIRE)) {
-            ci.cancel();
+        World var3 = this.getWorld();
+        if (var3 instanceof ServerWorld) {
+            ServerWorld serverWorld = (ServerWorld) var3;
+            if (!serverWorld.getGameRules().getBoolean(LIGHTNING_CREATES_FIRE)) {
+                ci.cancel();
+            }
         }
     }
     @Inject(method = "cleanOxidation", at = @At("HEAD"), cancellable = true)
     private static void cleanOxidationMixin(World world, BlockPos pos, CallbackInfo ci) {
-        if (!world.getGameRules().getBoolean(LIGHTNING_CLEARS_OXIDATION)) {
-            ci.cancel();
+        World var3 = world;
+        if (var3 instanceof ServerWorld) {
+            if (!((ServerWorld) var3).getGameRules().getBoolean(LIGHTNING_CLEARS_OXIDATION)) {
+                ci.cancel();
+            }
         }
     }
 }

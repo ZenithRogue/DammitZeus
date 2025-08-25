@@ -1,10 +1,14 @@
 package dev.zenithknight.mcmods.dammitzeus.mixin;
 
+import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.conversion.EntityConversionContext;
 import net.minecraft.entity.mob.ElderGuardianEntity;
 import net.minecraft.entity.mob.GuardianEntity;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
@@ -21,18 +25,25 @@ public abstract class GuardianEntityMixin extends HostileEntity {
     @Override
     public void onStruckByLightning(ServerWorld world, LightningEntity lightning) {
         if (world.getGameRules().getBoolean(LIGHTNING_CONVERTS_GUARDIANS)) {
-            ElderGuardianEntity elderGuardianEntity = (ElderGuardianEntity)EntityType.ELDER_GUARDIAN.create(world);
-            if (elderGuardianEntity != null) {
-                elderGuardianEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
-                elderGuardianEntity.setAiDisabled(this.isAiDisabled());
-                if (this.hasCustomName()) {
-                    elderGuardianEntity.setCustomName(this.getCustomName());
-                    elderGuardianEntity.setCustomNameVisible(this.isCustomNameVisible());
-                }
-                elderGuardianEntity.setPersistent();
-                world.spawnEntity(elderGuardianEntity);
-                this.discard();
-            } else {
+//            ElderGuardianEntity elderGuardianEntity = (ElderGuardianEntity)EntityType.ELDER_GUARDIAN.create(world);
+//            if (elderGuardianEntity != null) {
+//                elderGuardianEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+//                elderGuardianEntity.setAiDisabled(this.isAiDisabled());
+//                if (this.hasCustomName()) {
+//                    elderGuardianEntity.setCustomName(this.getCustomName());
+//                    elderGuardianEntity.setCustomNameVisible(this.isCustomNameVisible());
+//                }
+//                elderGuardianEntity.setPersistent();
+//                world.spawnEntity(elderGuardianEntity);
+//                this.discard();
+//            } else {
+//                super.onStruckByLightning(world, lightning);
+//            }
+            ElderGuardianEntity elderGuardianEntity = (ElderGuardianEntity) this.convertTo(EntityType.ELDER_GUARDIAN, EntityConversionContext.create(this, false, false), (elderGuardian) -> {
+                elderGuardian.initialize(world, world.getLocalDifficulty(elderGuardian.getBlockPos()), SpawnReason.CONVERSION, (EntityData)null);
+                elderGuardian.setPersistent();
+            });
+            if (elderGuardianEntity == null) {
                 super.onStruckByLightning(world, lightning);
             }
         } else {

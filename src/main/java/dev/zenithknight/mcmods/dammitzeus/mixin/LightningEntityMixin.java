@@ -16,16 +16,13 @@ import static dev.zenithknight.mcmods.dammitzeus.DammitZeus.LIGHTNING_CLEARS_OXI
 
 
 @Mixin(LightningEntity.class)
-public abstract class LightningEntityMixin extends Entity {
-    public LightningEntityMixin(EntityType<?> type, World world) {
-        super(type, world);
-    }
+public abstract class LightningEntityMixin {
 
     @Inject(method = "spawnFire", at = @At("HEAD"), cancellable = true)
     public void spawnFireMixin(int spreadAttempts, CallbackInfo ci) {
-        World var3 = this.getWorld();
-        if (var3 instanceof ServerWorld) {
-            ServerWorld serverWorld = (ServerWorld) var3;
+        LightningEntity lightning = (LightningEntity) (Object) this;
+        World world = lightning.getEntityWorld();
+        if (world instanceof ServerWorld serverWorld) {
             if (!serverWorld.getGameRules().getBoolean(LIGHTNING_CREATES_FIRE)) {
                 ci.cancel();
             }
@@ -33,9 +30,8 @@ public abstract class LightningEntityMixin extends Entity {
     }
     @Inject(method = "cleanOxidation", at = @At("HEAD"), cancellable = true)
     private static void cleanOxidationMixin(World world, BlockPos pos, CallbackInfo ci) {
-        World var3 = world;
-        if (var3 instanceof ServerWorld) {
-            if (!((ServerWorld) var3).getGameRules().getBoolean(LIGHTNING_CLEARS_OXIDATION)) {
+        if (world instanceof ServerWorld) {
+            if (!((ServerWorld) world).getGameRules().getBoolean(LIGHTNING_CLEARS_OXIDATION)) {
                 ci.cancel();
             }
         }
